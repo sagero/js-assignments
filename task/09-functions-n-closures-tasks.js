@@ -66,13 +66,10 @@ function getPowerFunction(exponent) {
  *   getPolynom()      => null
  */
 function getPolynom(...a) {
-    throw new Error('Not implemented');
+    //throw new Error('Not implemented');
     if (a.length==0)
         return null;
-        
     return (x)=> a.reverse().reduce((acc,k,i)=>(acc+(Math.pow(x,i))*k),0);
-throw new Error('Not implemented');
-    // ???  почему не рабоет?
 }
 
 
@@ -184,17 +181,14 @@ function partialUsingArguments(fn) {
  *   getId4() => 7
  *   getId10() => 11
  */
-function getIdGeneratorFunction(startFrom) {
-   
-    throw new Error('Not implemented');
 
-    return (startFrom)=>{
-        let c = startFrom;
-        if (!startFrom)
-            c++;     
-        return c
-        
+function getIdGeneratorFunction(startFrom) {
+    let start=startFrom-1;
+    let f= function(z) {
+        start++;
+        return start;
     }
+    return f;
 }
 
 

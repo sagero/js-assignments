@@ -430,9 +430,10 @@ function toStringList(arr) {
  */
 function sortCitiesArray(arr) {
    //let z=arr.sort((a,b)=>(a.city>b.city));
-   //return z.sort()
-   //return arr.sort((a,b)=>((a.city<b.city)&&(a.country<b.country)));
-   throw new Error('Not implemented');
+   
+      return arr.sort((a,b)=>(a.city>b.city)).sort((a,b)=>(a.country>b.country))
+   //return arr.sort((a,b)=>((a.city>b.city)&&(a.country>b.country)));
+   //throw new Error('Not implemented');
 }
 
 /**
