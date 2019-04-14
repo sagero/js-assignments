@@ -89,6 +89,52 @@ function* expandBraces(str) {
  */
 function getZigZagMatrix(n) {
     throw new Error('Not implemented');
+    let result= new Array(n).fill(new Array (n).fill(0));
+    let i=0;
+    let j=0;
+    let reverse=true;
+    let dir='right';
+    for (let k=0; k<n*n; k++) {
+        result[i][j]=k;
+        if (d==1) {
+            if (i==0) 
+                if (reverse==true){
+                    j++;
+                    reverse==false;
+                }
+                else{
+                    j--;
+                    i++;
+                    if (j==0) reverse=true;
+                }
+            }
+            else
+                if (j==0) {
+
+                    if (reverse==true){
+                        i++;
+                        reverse==false;
+                    }
+                    else{
+                        i--;
+                        j++;
+                        if (i==0) reverse=true;
+                    }
+                }
+                else{
+                    if (dir=='right') {
+                        j++;
+                        i--;
+                    }
+                    else{
+                        i++;
+                        j--;
+                    }
+                }
+               }
+     
+    
+    return result;
 }
 
 
@@ -137,7 +183,33 @@ function canDominoesMakeRow(dominoes) {
  * [ 1, 2, 4, 5]          => '1,2,4,5'
  */
 function extractRanges(nums) {
-    throw new Error('Not implemented');
+    let prev_start=nums[0];
+    let prev_end=prev_start;
+    let result=""+prev_start;
+    let is_long=false;
+    for (let i=1; i<nums.length; i++){
+        if ((nums[i]-prev_end)==1) { 
+            prev_end=nums[i];
+            is_long=true;
+        }
+        else { // break
+            if (prev_end-prev_start>1)
+                result +='-'+prev_end;    
+            else
+                if (is_long)
+                    result +=','+prev_end;    
+           
+            is_long=false;
+            result +=','+nums[i];
+            prev_start=nums[i];
+            prev_end=prev_start;
+        }
+    }
+    if (prev_end-prev_start>1)
+        result +='-'+prev_end;    
+    else
+        result +=','+prev_end;   
+    return result;
 }
 
 module.exports = {
